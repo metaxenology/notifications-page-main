@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Notifications page</title>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap');
+    * {
+        --white: hsl(0, 0%, 100%);
+        --veryLightGrayishBlue: hsl(210, 60%, 98%);
+        --lightGrayishBlue1: hsl(211, 68%, 94%);
+        --lightGrayishBlue2: hsl(205, 33%, 90%);
+        --grayishBlue: hsl(219, 14%, 63%);
+        --darkGrayishBlue: hsl(219, 12%, 42%);
+        --veryDarkBlue: hsl(224, 21%, 14%);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: var(--veryLightGrayishBlue);
+    }
+    .mainWrapper {
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        place-items: center;
+    }
+    .mainContainer {
+        max-width: 800px;
+        display: grid;
+        background-color: var(--white);
+    }
+    .notificationsContainer {
+        display: grid;
+        padding: 1rem;
+    }
+    .title {
+        color: var(--veryDarkBlue);
+        font-weight: 800;
+    }
+    .numberOfNotifications {
+        color: var(--white);
+        font-weight: 500;
+        background-color: #09327C;
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+    }
+    .readOrUnread {
+        font-weight: 300;
+        color: var(--grayishBlue);
+        float: right;
+    }
+    .readOrUnread:hover {
+        color: darkblue;
+        cursor: pointer;
+    }
+    .notification{
+        word-wrap: break-word;
+        padding: 0.5rem;
+        margin: 0.25rem;
+        display: grid;
+        color: var(--grayishBlue);
+        grid-template-columns: 0.1fr 1fr;
+        background-color: var(--veryLightGrayishBlue);
+        object-fit: contain;
+    }
+    .avatar {
+        height: auto;
+        width: 100%;
+    }
+    img {
+        height: 50px;
+        float: right;
+    }
+    .name {
+        font-weight: bold;
+        color: var(--veryDarkBlue);
+    }
+    .name:hover {
+        color: darkblue;
+        cursor: pointer;
+    }
+    .unread {
+        background-color: var(--lightGrayishBlue2);
+    }    
+    .notificationText {
+        display: grid;
+        grid-template-rows: auto auto;
+    }
+    .heading {
+        padding: 1rem;
+    }
+    #unreadSign {
+        height: 0.5rem;
+        width: 0.5rem;
+        display: inline-block;
+        background-color: rgb(176, 35, 35);
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+    .additionalContent {
+        padding: 0.75rem;
+        border: 1px solid rgb(217, 215, 215);
+    }
+    .additionalContent:hover{
+        background-color: #E5EFF9;
+        color: black
+        background-color: rgb(126, 126, 147);
+    }
+    span {
+        white-space: pre;
+    }
+    a {
+        text-decoration: none;
+    }
+    .post {
+        font-weight: 800;
+        color: var(--grayishBlue);
+    }
+    .group {
+        color: darkblue;
+    }
+    @media (max-width: 600px) {
+        .notificationsContainer {
+            max-width: 100vw;
+            height: 100vh;
+            width: 100vw;
+        }
+        .heading {
+            padding: 0;
+        }
+    }
+  </style>
+</head>
+<body>
+    <div class="mainWrapper">
+        <div class="mainContainer">
+            <div class="notificationsContainer">
+                <div class="heading">
+                    <span class="title">Notifications</span>
+                    <span class="numberOfNotifications">3</span>
+                    <span class="readOrUnread">Mark all as read</span>
+                </div>
+                <div class="notification unread">
+                    <img class="avatar" src="./assets/images/avatar-mark-webber.webp" alt="mark" />
+                    <div class="notificationText">
+                        <div>
+                            <span class="name">Mark Webber </span>
+                            <span class="notificationDescription"> reacted to your recent post </span>
+                            <a href="#" class="post" >My first tournament today!</a>
+                            <span id="unreadSign"></span>
+                        </div>
+                        <span class="timeStamp">1 min ago</span>
+                    </div>
+                </div>
+                <div class="notification unread">
+                    <img src="./assets/images/avatar-angela-gray.webp" alt="angela" class="avatar" />
+                    <div class="notificationText">
+                        <div>
+                            <span class="name">Angela Gray </span>
+                            <span class="notificationDescription"> followed you </span>
+                            <span id="unreadSign"></span>
+                        </div>
+                        <span class="timeStamp">5 days ago</span>
+                    </div>
+                </div>
+                <div class="notification unread">
+                    <img src="./assets/images/avatar-jacob-thompson.webp" alt="jacob" class="avatar" />
+                    <div class="notificationText">
+                        <div>
+                            <span class="name">Jacob Thompson</span>
+                            <span class="notificationDescription"> has joined your group</span>
+                            <a class="group" href="#">Chess Club</a>
+                            <span id="unreadSign"></span>
+                        </div>
+                        <span class="timeStamp">1 day ago</span>
+                        <div class="additionalContent">
+                            Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="notification">
+                    <img src="./assets/images/avatar-rizky-hasanuddin.webp" alt="rizky" class="avatar" />
+                    <div class="notificationText">
+                        <div>
+                            <span class="name">Rizky Hasanuddin</span>
+                            <span class="notificationDescription"> sent you a private message</span>
+                        </div>
+                        <span class="timeStamp">5 days ago</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <img src="./assets/images/avatar-kimberly-smith.webp" alt="kimberly" class="avatar" />
+                    <div class="notificationText">
+                        <div>
+                            <span class="name">Kimberly Smith</span>
+                            <span class="notificationDescription"> commented on your picture</span>
+                            <img src="./assets/images/image-chess.webp" />
+                        </div>
+                        <span class="timestamp">1 week ago</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <img src="./assets/images/avatar-nathan-peterson.webp" alt="nathan" class="avatar" />
+                    <div class="notificationText">
+                        <div>
+                            <span class="name">Nathan Peterson</span>
+                            <span class="notificationDescription"> reacted to your recent post</span>
+                            <a class="post" href="#">5 end-game strategies to increase your win rate </a>
+                        </div>
+                        <span class="timestamp">2 weeks ago</span>
+                    </div>
+                </div>
+                 <div class="notification">
+                    <img src="./assets/images/avatar-anna-kim.webp" alt="anna" class="avatar" />
+                    <div class="notificationText">
+                        <div>
+                            <span class="name">Anna Kim</span>
+                            <span class="notificationDescription">left the group</span>
+                            <a class="group" href="#">Chess Club</a>
+                        </div>
+                        <span class="timeStamp">2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
